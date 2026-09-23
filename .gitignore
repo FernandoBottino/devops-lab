@@ -1,0 +1,15 @@
+# Logs
+*.log
+#Backups
+*.bak
+#Arquivos temporários de testes
+linux/scripts/saida.log
+linux/scripts/erro.log
+linux/scripts/tudo.log
+#Downloads temporários do laboratório
+sftp/download/
+#Arquivos de ambientes e credenciais
+.env
+.env.*
+*.pem
+*.key

@@ -1,0 +1,10 @@
+web1
+web01
+web001
+web123
+server1
+server01
+server001
+db1
+db12
+db123
