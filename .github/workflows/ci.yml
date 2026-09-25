@@ -24,6 +24,11 @@ jobs:
             bash -n "$file"
           done
 
+      - name: ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: './linux/scripts'
+
       - name: Validar configuração
         run: |
           test -f linux/scripts/app.conf
