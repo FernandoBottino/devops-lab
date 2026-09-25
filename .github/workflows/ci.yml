@@ -1,0 +1,36 @@
+name: DevOps Lab CI
+
+on:
+  push:
+    branches:
+      - main
+      - feature/**
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Validar scripts Bash
+        run: |
+          for file in linux/scripts/*.sh; do
+            echo "Validando: $file"
+            bash -n "$file"
+          done
+
+      - name: Validar configuração
+        run: |
+          test -f linux/scripts/app.conf
+          grep -q "^APP_NAME=" linux/scripts/app.conf
+          grep -q "^APP_ENV=" linux/scripts/app.conf
+          grep -q "^APP_PORT=" linux/scripts/app.conf
+          grep -q "^APP_DEBUG=" linux/scripts/app.conf
+
+      - name: CI concluída
+        run: echo "Todos os testes passaram!"
